@@ -14,11 +14,8 @@ class ArquivoDeMidia(ABC):
 
     @abstractmethod
     def reproduzir(self):
-        print(f"Titulo: {self.titulo}/n"
-              f"Artista: {self.artista}/n"
-              f"Duração: {self.duracao}")
+        pass
         
     @abstractmethod
     def __eq__ (self, other):
-        if isinstance(other, ArquivoDeMidia):
-            return self.titulo == other.titulo
+        pass
