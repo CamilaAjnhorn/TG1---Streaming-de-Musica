@@ -19,4 +19,22 @@ class Musica(ArquivoDeMidia):
         if value in permitidos:
             self.genero = value
 
+    def avaliar (self, nota:int):
+        nota = int(nota)
+        self._avaliacoes.append(nota)
+
+    def reproduzir(self):
+        return (f"Música: {self.titulo}\n"
+                f"Artista: {self.artista}\n"
+                f"Duração: {self.duracao}\n"
+                f"{len(self._avaliacoes)/sum(self._avaliacoes)} estrelas")
+    
+    def __eq__ (self, other):
+        if isinstance(other, Musica):
+            if (self.titulo == other.titulo 
+                and 
+                self.artista == other.artista):
+                return True
+            else:
+                return False
     
