@@ -1,4 +1,4 @@
-from .arquivo_de_midia import ArquivoDeMidia
+from .arquivo_de_midia import *
 
 class Podcast (ArquivoDeMidia):
     def __init__(self, titulo, duracao, artista,
