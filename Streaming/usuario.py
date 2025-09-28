@@ -7,7 +7,7 @@ class Usuario:
     
     def __init__(self, nome:str, playlists, historico):
         self.nome = str(nome)
-        self.playlists = []
+        self.playlists = {}
         self.historico = []
         Usuario.qntd_instancias += 1
 
@@ -17,4 +17,9 @@ class Usuario:
             midia.reproduzir()
 
     def criar_playlist (self, nome):
-        pass
+        if nome in self.playlists.keys():
+            raise NameError("Você já tem uma playlist com esse nome")
+        else:
+            self.playlists[nome] = []
+
+    
