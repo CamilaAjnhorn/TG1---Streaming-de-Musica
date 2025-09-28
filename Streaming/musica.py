@@ -38,3 +38,14 @@ class Musica(ArquivoDeMidia):
             else:
                 return False
     
+    def __str__(self):
+        return (f"Titulo: {self.titulo}\n"
+                f"{self.duracao} min\n"
+                f"Artista: {self.artista}\n"
+                f"Genero: {self.genero}\n"
+                f"Avaliação: {sum(self._avaliacoes)/len(self._avaliacoes)}")
+    
+    def __repr__(self):
+        return (f"titulo = {self.titulo} | duração = {self.duracao}"
+                f"| artista = {self.artista} | genero = {self.genero}"
+                f"avaliações = {self._avaliacoes}")

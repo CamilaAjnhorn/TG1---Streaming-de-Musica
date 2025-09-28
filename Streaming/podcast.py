@@ -24,3 +24,15 @@ class Podcast (ArquivoDeMidia):
                 return True
             else:
                 return False
+
+    def __str__ (self):
+        return (f"Título: {self.titulo}\n"
+                f"{self.duracao} min\n"
+                f"Episodio: {self.episodio}\n"
+                f"Temporada: {self.temporada}\n"
+                f"Host: {self.host}")
+    
+    def __repr__(self):
+        return (f"titulo = {self.titulo} | duracao = {self.duracao}" 
+                f"| episodio = {self.episodio} | temporada = {self.temporada}" 
+                f"| host = {self.host}")

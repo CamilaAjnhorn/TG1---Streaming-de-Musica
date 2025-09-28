@@ -22,4 +22,12 @@ class Usuario:
         else:
             self.playlists[nome] = []
 
+    def __str__ (self):
+        return (f"Nome: {self.nome}\n"
+                f"Playlists: {self.playlists}\n"
+                f"Histórico: {self.historico}\n")
+    
+    def __repr__(self):
+        return (f"nome = {self.nome} | playlists = {self.playlists} | historico = {self.historico} | quantidade de usuarios = {Usuario.qntd_instancias}")
+
     
