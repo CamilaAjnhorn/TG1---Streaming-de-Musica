@@ -1,5 +1,5 @@
 from .arquivo_de_midia import *
-from .utils import reistrar_erro
+from .utils import registrar_erro
 
 class Podcast (ArquivoDeMidia):
     def __init__(self, titulo, duracao, artista,
@@ -10,7 +10,7 @@ class Podcast (ArquivoDeMidia):
             self.temporada = str(temporada)
             self.host = str(host)
         except Exception as e:
-            reistrar_erro(f"[Podcast] Erro ao registrar podcast: {e}")
+            registrar_erro(f"[Podcast] Erro ao registrar podcast: {e}")
 
     def reproduzir(self):
         try:
@@ -20,7 +20,7 @@ class Podcast (ArquivoDeMidia):
                     f"Temporada: {self.temporada}\n"
                     f"Host: {self.host}\n")
         except Exception as e:
-            reistrar_erro(f"[Podcast] Erro ao reproduzir podcast '{self.titulo}': {e}")
+            registrar_erro(f"[Podcast] Erro ao reproduzir podcast '{self.titulo}': {e}")
     
     def __eq__(self, other):
         try:
@@ -32,7 +32,7 @@ class Podcast (ArquivoDeMidia):
                 else:
                     return False
         except Exception as e:
-            reistrar_erro(f"[Podcast] Erro ao comparar podcasts: {e}")
+            registrar_erro(f"[Podcast] Erro ao comparar podcasts: {e}")
             return f"Erro ao comparar podcasts"
 
     def __str__ (self):
@@ -43,7 +43,7 @@ class Podcast (ArquivoDeMidia):
                     f"Temporada: {self.temporada}\n"
                     f"Host: {self.host}")
         except Exception as e:
-            reistrar_erro(f"[Podcast] Erro ao gerar __str__ de '{self.titulo}: {e}'")
+            registrar_erro(f"[Podcast] Erro ao gerar __str__ de '{self.titulo}: {e}'")
             return f"[Erro ao exibir informações de '{self.titulo}']"
     
     def __repr__(self):
@@ -52,5 +52,5 @@ class Podcast (ArquivoDeMidia):
                     f"| episodio = {self.episodio} | temporada = {self.temporada}" 
                     f"| host = {self.host}")
         except Exception as e:
-            reistrar_erro(f"[Podcast] Erro ao gerer __repr__: {e}")
+            registrar_erro(f"[Podcast] Erro ao gerer __repr__: {e}")
             return f"Podcast(informações indisponíveis)"

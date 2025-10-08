@@ -1,7 +1,7 @@
 import datetime
 import os
 
-def reistrar_erro (mensagem:str):
+def registrar_erro (mensagem:str):
     caminho_logs = "logs"
     
     arquivo_log = os.path.join(caminho_logs, "erros.log")

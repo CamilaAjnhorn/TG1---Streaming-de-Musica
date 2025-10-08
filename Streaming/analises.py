@@ -1,7 +1,7 @@
 from .musica import *
 from .playlist import *
 from .usuario import * 
-from .utils import reistrar_erro
+from .utils import registrar_erro
 
 class Analises:
     @staticmethod
@@ -16,7 +16,7 @@ class Analises:
 
             return mais_rep
         except Exception as e:
-            reistrar_erro(f"[Analises] Erro ao gerar top_musicas: {e}")
+            registrar_erro(f"[Analises] Erro ao gerar top_musicas: {e}")
     
     @staticmethod
     def playlist_mais_popular (playlists:list[Playlist]):
@@ -29,7 +29,7 @@ class Analises:
 
             return mais_rep
         except Exception as e:
-            reistrar_erro(f"[Analises] Erro ao encontrar playlist mais popular: {e}")
+            registrar_erro(f"[Analises] Erro ao encontrar playlist mais popular: {e}")
     
     @staticmethod
     def usuario_mais_ativo (usuarios:list[Usuario]):
@@ -43,7 +43,7 @@ class Analises:
                     mais_ativo = u
             return mais_ativo
         except Exception as e:
-            reistrar_erro(f"[Analises] Erro ao encontrar usuario mais ativo: {e}")
+            registrar_erro(f"[Analises] Erro ao encontrar usuario mais ativo: {e}")
 
     @staticmethod
     def media_avaliacoes (musicas:list[Musica]):
@@ -57,7 +57,7 @@ class Analises:
                     dic[m] = sum(m._avaliacoes) / len(m._avaliacoes)
             return dic
         except Exception as e:
-            reistrar_erro(f"[Analises] Erro ao gerar dicionário de médias: {e}")
+            registrar_erro(f"[Analises] Erro ao gerar dicionário de médias: {e}")
     
     @staticmethod
     def total_reproducoes (usuarios:list[Usuario]):
@@ -68,4 +68,4 @@ class Analises:
                 total += len(u.historico)
             return total
         except Exception as e:
-            reistrar_erro(f"[Analises] Erro ao contabilizar reproduções: {e}")
+            registrar_erro(f"[Analises] Erro ao contabilizar reproduções: {e}")

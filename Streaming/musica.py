@@ -1,6 +1,6 @@
 from .arquivo_de_midia import *
 from.analises import Analises
-from .utils import reistrar_erro
+from .utils import registrar_erro
 
 class Musica(ArquivoDeMidia):
     #inicia as instancias da classe musica
@@ -11,7 +11,7 @@ class Musica(ArquivoDeMidia):
             self.genero = genero
             self._avaliacoes = list(avaliacoes) if avaliacoes else []
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao inicializar '{titulo}': {e}")
+            registrar_erro(f"[Musica] Erro ao inicializar '{titulo}': {e}")
             self._avaliacoes = []
 
     #getter e setter de genero
@@ -28,7 +28,7 @@ class Musica(ArquivoDeMidia):
             else:
                 raise ValueError(f"Gênero inválido: {value}")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao definir gênero para '{self.titulo}': {e}")
+            registrar_erro(f"[Musica] Erro ao definir gênero para '{self.titulo}': {e}")
             self.genero = "Desconhecido"
 
     def avaliar (self, nota:int):
@@ -40,7 +40,7 @@ class Musica(ArquivoDeMidia):
             else:
                 raise ValueError("Nota fora do intervalo permitido")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao avaliar '{self.titulo}': {e}")
+            registrar_erro(f"[Musica] Erro ao avaliar '{self.titulo}': {e}")
         
         
         self._avaliacoes.append(nota)
@@ -55,7 +55,7 @@ class Musica(ArquivoDeMidia):
                     f"Duração: {self.duracao}\n"
                     f"{media} estrelas")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao reproduzir '{self.titulo}': {e}")
+            registrar_erro(f"[Musica] Erro ao reproduzir '{self.titulo}': {e}")
             return f"Erro ao reproduzir música '{self.titulo}'."
         
     def __eq__ (self, other):
@@ -68,7 +68,7 @@ class Musica(ArquivoDeMidia):
                 else:
                     return False
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao comparar músicas: {e}")
+            registrar_erro(f"[Musica] Erro ao comparar músicas: {e}")
             return f"Erro ao comparar musicas"
         
     def __str__(self):
@@ -82,7 +82,7 @@ class Musica(ArquivoDeMidia):
                     f"Genero: {self.genero}\n"
                     f"Avaliação: {media}")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao gerar __str__ de '{self.titulo}'")
+            registrar_erro(f"[Musica] Erro ao gerar __str__ de '{self.titulo}'")
             return f"[Erro ao exibir informações de '{self.titulo}']"
     
     def __repr__(self):
@@ -91,5 +91,5 @@ class Musica(ArquivoDeMidia):
                     f"| artista = {self.artista} | genero = {self.genero}"
                     f"avaliações = {self._avaliacoes}")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao gerar __repr__: {e}")
+            registrar_erro(f"[Musica] Erro ao gerar __repr__: {e}")
             return f"Musica(informações indisponíveis)"
