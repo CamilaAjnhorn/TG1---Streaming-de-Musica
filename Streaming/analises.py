@@ -25,4 +25,27 @@ class Analises:
     
     @staticmethod
     def usuario_mais_ativo (usuarios:list[Usuario]):
-        pass
+        mais_ativo = None
+        for u in usuarios:
+            if mais_ativo == None:
+                mais_ativo = u
+            elif len(u.historico) > len(mais_ativo.historico):
+                mais_ativo = u
+        return mais_ativo
+
+    @staticmethod
+    def media_avaliacoes (musicas:list[Musica]):
+        dic = {}
+        for m in musicas:
+            if m._avaliacoes == 0:
+                dic[m] = 0
+            else:
+                dic[m] = sum(m._avaliacoes) / len(m._avaliacoes)
+        return dic
+    
+    @staticmethod
+    def total_reproducoes (usuarios:list[Usuario]):
+        total = 0
+        for u in usuarios:
+            total += len(u.historico)
+        return total
