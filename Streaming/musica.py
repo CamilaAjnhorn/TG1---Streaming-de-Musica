@@ -55,7 +55,7 @@ class Musica(ArquivoDeMidia):
                     f"Duração: {self.duracao}\n"
                     f"{media} estrelas")
         except Exception as e:
-            reistrar_erro(f"[Musica] Erro ao rewproduzir '{self.titulo}': {e}")
+            reistrar_erro(f"[Musica] Erro ao reproduzir '{self.titulo}': {e}")
             return f"Erro ao reproduzir música '{self.titulo}'."
         
     def __eq__ (self, other):
@@ -69,7 +69,8 @@ class Musica(ArquivoDeMidia):
                     return False
         except Exception as e:
             reistrar_erro(f"[Musica] Erro ao comparar músicas: {e}")
-
+            return f"Erro ao comparar musicas"
+        
     def __str__(self):
         try:
             medias = Analises.media_avaliacoes([self])
