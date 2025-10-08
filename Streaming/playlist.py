@@ -4,6 +4,7 @@ from .usuario import *
 from .utils import registrar_erro
 
 class Playlist:
+    # instancia um objeto Playlist
     def __init__(self, nome:str, usuario:Usuario, 
                  itens:list[ArquivoDeMidia], reproducoes:int):
         try:
@@ -14,6 +15,7 @@ class Playlist:
         except Exception as e:
             registrar_erro(f"[Playlist] Erro ao gerar playlist: {e}")
 
+    # adiciona uma midia a uma playlist
     def adicionar_midia (self, midia:ArquivoDeMidia):
         try:
             if isinstance(midia, ArquivoDeMidia):
@@ -22,7 +24,8 @@ class Playlist:
                 raise TypeError("Arquivo não encontrado")
         except Exception as e:
             registrar_erro(f"[Playlist] Erro ao adicionar mídia '{midia}': {e}")
-        
+    
+    # remove uma midia de uma playlist
     def remover_midia (self, midia:ArquivoDeMidia):
         try:
             if midia in self.itens:
@@ -32,7 +35,8 @@ class Playlist:
                 raise NameError("Midia não encontada")
         except Exception as e:
             registrar_erro(f"[Playlist] Erro ao remover mídia '{midia}':{e}")
-        
+    
+    # reproduz uma playlist
     def reproduzir (self):
         try:
             for i in self.itens:
@@ -42,6 +46,7 @@ class Playlist:
             registrar_erro(f"[Playlist] Erro ao reproduzir playlist '{self.nome}: {e}")
             return f"Erro ao reproduzir playlist '{self.nome}'"
 
+    # ao somar duas playlists as concatena e retorna uma nova
     def __add__ (self, other):
         try:
             if isinstance(other, Playlist):
@@ -59,13 +64,15 @@ class Playlist:
             registrar_erro(f"[Playlist] Erro ao unir playlists: {e}")
             return f"Erro ao unir playlists"
 
+    # usar o metodo len retorna o tamanho da playlist
     def __len__ (self):
         try:
             return len(self.itens)
         except Exception as e:
             registrar_erro(f"[Playlist] Erro ao verificar tamanho da playlist: {e}")
             return f"Erro ao verificar tamanho da playlist"
-        
+    
+    # usar o metodo getitem retorna o item associado ao index informado
     def __getitem__ (self, index):
         try:
             return self.itens[index]
@@ -73,6 +80,7 @@ class Playlist:
             registrar_erro(f"[Playlist] Erro ao encontrar item por index: {e}")
             return f"Erro ao encontrar item por index"
     
+    # ao comparar duas playlists retorna true se forem exatamente iguais
     def __eq__ (self, other):
         try:
             if isinstance(other, Playlist):

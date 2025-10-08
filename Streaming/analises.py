@@ -4,6 +4,10 @@ from .usuario import *
 from .utils import registrar_erro
 
 class Analises:
+    
+    """
+    Percorre as musicas cadastras e retorna as to 5 musicas mais reproduzidas
+    """
     @staticmethod
     def top_musicas (musicas:list[Musica], top_n:int = 5):
         mais_rep = [m for m in musicas[:top_n]]
@@ -18,6 +22,9 @@ class Analises:
         except Exception as e:
             registrar_erro(f"[Analises] Erro ao gerar top_musicas: {e}")
     
+    """
+    percorre as playlists existentes e retorna a mais escutada
+    """
     @staticmethod
     def playlist_mais_popular (playlists:list[Playlist]):
         mais_rep = None
@@ -31,6 +38,10 @@ class Analises:
         except Exception as e:
             registrar_erro(f"[Analises] Erro ao encontrar playlist mais popular: {e}")
     
+    """
+    percorre os usuarios ecistentes e retorna o mais ativo
+    (o que mais ouviu musicas)
+    """
     @staticmethod
     def usuario_mais_ativo (usuarios:list[Usuario]):
         mais_ativo = None
@@ -45,6 +56,9 @@ class Analises:
         except Exception as e:
             registrar_erro(f"[Analises] Erro ao encontrar usuario mais ativo: {e}")
 
+    """
+    faz a media das avaliações das musicas e retorna um dicionario com as informações
+    """
     @staticmethod
     def media_avaliacoes (musicas:list[Musica]):
         dic = {}
@@ -59,6 +73,9 @@ class Analises:
         except Exception as e:
             registrar_erro(f"[Analises] Erro ao gerar dicionário de médias: {e}")
     
+    """
+    percorre todos os usuarios e retorna o total te reproduções
+    """
     @staticmethod
     def total_reproducoes (usuarios:list[Usuario]):
         total = 0

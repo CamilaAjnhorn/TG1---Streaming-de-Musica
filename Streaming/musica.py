@@ -18,6 +18,7 @@ class Musica(ArquivoDeMidia):
     @property
     def genero (self):
         return self.genero
+    
     #garante que o genero é um dos permitidos
     @genero.setter
     def genero (self, value):
@@ -31,6 +32,7 @@ class Musica(ArquivoDeMidia):
             registrar_erro(f"[Musica] Erro ao definir gênero para '{self.titulo}': {e}")
             self.genero = "Desconhecido"
 
+    # permite que o usuario adicione uma avaliação de uma música
     def avaliar (self, nota:int):
         try:
             nota = int(nota)
@@ -45,6 +47,7 @@ class Musica(ArquivoDeMidia):
         
         self._avaliacoes.append(nota)
 
+    # reproduz uma música
     def reproduzir(self):
         try:
             medias = Analises.media_avaliacoes([self])
@@ -57,7 +60,8 @@ class Musica(ArquivoDeMidia):
         except Exception as e:
             registrar_erro(f"[Musica] Erro ao reproduzir '{self.titulo}': {e}")
             return f"Erro ao reproduzir música '{self.titulo}'."
-        
+    
+    # compara duas musicas
     def __eq__ (self, other):
         try:
             if isinstance(other, Musica):
@@ -70,7 +74,7 @@ class Musica(ArquivoDeMidia):
         except Exception as e:
             registrar_erro(f"[Musica] Erro ao comparar músicas: {e}")
             return f"Erro ao comparar musicas"
-        
+    
     def __str__(self):
         try:
             medias = Analises.media_avaliacoes([self])
