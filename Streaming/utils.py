@@ -73,7 +73,7 @@ def carregar_dados_md (caminho = "config/dados.md"):
             linha = linhas[i]
 
             if linha.startswith("# "):
-                secao_atual = linha[:2].strip().lower()
+                secao_atual = linha[2:].strip().lower()
                 i += 1
                 continue
 
@@ -87,7 +87,7 @@ def carregar_dados_md (caminho = "config/dados.md"):
                     if any (u.nome == nome for u in usuarios):
                         registrar_erro(f"[Config] Usuário duplicado: {nome}")
                     else:
-                        usuarios.append(Usuario(nome))
+                        usuarios.append(Usuario(nome, {}, []))
                     
                     i += 2        
                 except Exception as e:
@@ -115,13 +115,15 @@ def carregar_dados_md (caminho = "config/dados.md"):
                         titulo, 
                         duracao, 
                         artista, 
-                        genero
+                        genero,
+                        []
                     ))
 
                     i += 4
                 except Exception as e:
                     registrar_erro(f"[Config] Erro ao carregar música na linha {i + 1}: {e}")
                     i += 1
+                continue
 
             # podcasts
             if secao_atual == "podcasts" and linha.startswith("- titulo"):
@@ -156,6 +158,7 @@ def carregar_dados_md (caminho = "config/dados.md"):
                 except Exception as e:
                     registrar_erro(f"[Config] Erro ao carregar podcast na linha '{i + 1}: {e}'")
                     i +=1
+                continue
 
             # playlists
             if secao_atual == "playlists" and linha.startswith("- nome:"):
@@ -176,7 +179,7 @@ def carregar_dados_md (caminho = "config/dados.md"):
                     for item_nome in item_nomes:
                         midia = next((m for m in musicas if m.titulo == item_nome), None)
                         if not midia:
-                            midia = next((p for o in podcasts if p.titulo == item_nome))
+                            midia = next((p for p in podcasts if p.titulo == item_nome))
                         if midia:
                             playlist.adicionar_midia(midia)
                         else:
@@ -193,7 +196,7 @@ def carregar_dados_md (caminho = "config/dados.md"):
             
             i += 1
 
-        return musicas, usuarios, playlists
+        return musicas, usuarios, playlists, podcasts
     
     except Exception as e:
         registrar_erro(f"[Config] Erro ao carregar dados do arquivo Markdown: {e}")
