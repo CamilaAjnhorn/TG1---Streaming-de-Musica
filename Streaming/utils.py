@@ -55,3 +55,55 @@ def gerar_relatorio (musicas:list[Musica], playlists:list[Playlist], usuarios:li
         print("Relatório gerado com sucesso!")
     except Exception as e:
         registrar_erro(f"[Relatorio] Erro ao gerar relatório")
+
+def carregar_dados_md (caminho = "config/dados.md"):
+    musicas = []
+    usuarios = []
+    playlists = []
+    secao_atual = None
+
+    try:
+        with open(caminho, "r") as f:
+            for linha in f:
+                linha = linha.strip()
+
+                if linha.startswith("# "):
+                    secao_atual = linha[2:].strip().lower()
+                    continue
+
+                if linha == "---" or linha == "":
+                    continue
+
+                if secao_atual == "usuários":
+                    if linha.startswith("- nome:"):
+                        nome = linha.split(":")[1].strip()
+                        usuarios.append(Usuario(nome))
+                
+                elif secao_atual == "músicas":
+                    if linha.startswith("- titulo:"):
+                        titulo = linha.split(":")[1].strip()
+                        artista = f.readline().split(":")[1].strip()
+                        duracao = int(f.readline().split(":")[1].strip())
+                        genero = f.readline().split(":")[1].strip()
+                        aval = f.readline().split(":")[1].strip()
+                        avaliacoes = [int(x) for x in aval.strip("[]").split(",")]
+                        musicas.append(Musica(
+                            titulo,
+                            duracao,
+                            artista,
+                            genero,
+                            avaliacoes
+                        ))
+                elif secao_atual == "playlists":
+                    if linha.startswith("- nome:"):
+                        nome = linha.split(":")[1].strip()
+                        usuario = f.readline().split(":")[1].strip()
+                        musicas_str = f.readline().split(":")[1].strip()
+                        nomes = [x.strip() for x in musicas_str.strip("[]").split(",")]
+                        playlists.append(nome, usuario, nomes)
+
+        return musicas, usuarios, playlists
+    except Exception as e:
+        registrar_erro(f"[Config] Erro ao carregar dados do arquivo Markdown: {e}")
+        return [], [], []
+    
