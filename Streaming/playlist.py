@@ -5,7 +5,7 @@ from .utils import registrar_erro
 
 class Playlist:
     # instancia um objeto Playlist
-    def __init__(self, nome:str, usuario:Usuario, 
+    def __init__(self, nome:str, usuario:"Usuario", 
                  itens:list[ArquivoDeMidia], reproducoes:int):
         try:
             self.nome = str(nome)

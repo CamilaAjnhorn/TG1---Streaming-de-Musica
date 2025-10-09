@@ -9,7 +9,7 @@ class Analises:
     Percorre as musicas cadastras e retorna as to 5 musicas mais reproduzidas
     """
     @staticmethod
-    def top_musicas (musicas:list[Musica], top_n:int = 5):
+    def top_musicas (musicas:list["Musica"], top_n:int = 5):
         mais_rep = [m for m in musicas[:top_n]]
         rep_mus = {m.reproducoes : idx for idx, m in enumerate(mais_rep)}
 
@@ -26,7 +26,7 @@ class Analises:
     percorre as playlists existentes e retorna a mais escutada
     """
     @staticmethod
-    def playlist_mais_popular (playlists:list[Playlist]):
+    def playlist_mais_popular (playlists:list["Playlist"]):
         mais_rep = None
         
         try:
@@ -43,7 +43,7 @@ class Analises:
     (o que mais ouviu musicas)
     """
     @staticmethod
-    def usuario_mais_ativo (usuarios:list[Usuario]):
+    def usuario_mais_ativo (usuarios:list["Usuario"]):
         mais_ativo = None
         
         try:
@@ -60,7 +60,7 @@ class Analises:
     faz a media das avaliações das musicas e retorna um dicionario com as informações
     """
     @staticmethod
-    def media_avaliacoes (musicas:list[Musica]):
+    def media_avaliacoes (musicas:list["Musica"]):
         dic = {}
 
         try:
@@ -77,7 +77,7 @@ class Analises:
     percorre todos os usuarios e retorna o total te reproduções
     """
     @staticmethod
-    def total_reproducoes (usuarios:list[Usuario]):
+    def total_reproducoes (usuarios:list["Usuario"]):
         total = 0
         
         try:
