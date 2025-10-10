@@ -21,7 +21,7 @@ def carregar_dados_md(caminho="config/dados.md"):
     podcasts = []
 
     def registrar_erro(msg):
-        print(msg)  # substitua pelo seu logger, se houver
+        print(msg)
 
     try:
         with open(caminho, "r") as f:
@@ -37,9 +37,7 @@ def carregar_dados_md(caminho="config/dados.md"):
             elif secao_atual:
                 secoes[secao_atual].append(linha)
 
-        # ----------------------
-        # Carregar Usuários
-        # ----------------------
+        # Carregar Usuário
         i = 0
         linhas_u = secoes.get("usuarios", [])
         while i < len(linhas_u):
@@ -49,9 +47,7 @@ def carregar_dados_md(caminho="config/dados.md"):
                 usuarios.append(Usuario(nome, {}, []))
             i += 1
 
-        # ----------------------
         # Carregar Músicas
-        # ----------------------
         linhas_m = secoes.get("musicas", [])
         i = 0
         while i < len(linhas_m):
@@ -71,9 +67,7 @@ def carregar_dados_md(caminho="config/dados.md"):
             else:
                 i += 1
 
-        # ----------------------
         # Carregar Podcasts
-        # ----------------------
         linhas_p = secoes.get("podcasts", [])
         i = 0
         while i < len(linhas_p):
@@ -91,9 +85,7 @@ def carregar_dados_md(caminho="config/dados.md"):
             else:
                 i += 1
 
-        # ----------------------
         # Carregar Playlists
-        # ----------------------
         linhas_pl = secoes.get("playlists", [])
         i = 0
         while i < len(linhas_pl):

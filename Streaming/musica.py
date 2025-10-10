@@ -5,25 +5,24 @@ from .utils import registrar_erro
 class Musica(ArquivoDeMidia):
     def __init__(self, titulo, duracao, artista, genero: str, avaliacoes: list[int] = None):
         super().__init__(titulo, duracao, artista)
-        self._genero = "Desconhecido"  # atributo interno
-        self.genero = genero            # usa o setter
+        self._genero = "Desconhecido" 
+        self.genero = genero            
         self._avaliacoes = list(avaliacoes) if avaliacoes else []
 
     # getter e setter de genero
     @property
     def genero(self):
-        return self._genero
+        return self.genero
 
     @genero.setter
     def genero(self, value):
         try:
             permitidos = ["Rock", "Pop", "Rap", "Classico", "Desconhecido"]
-            if not value or not value.strip():  # vazio ou None
+            if not value or not value.strip():  
                 self._genero = "Desconhecido"
             elif value.strip() in permitidos:
                 self._genero = value.strip()
             else:
-                # aceita qualquer outro gênero do Markdown
                 self._genero = value.strip()
                 registrar_erro(f"[Musica] Aviso: Gênero '{self._genero}' não está na lista oficial.")
         except Exception as e:

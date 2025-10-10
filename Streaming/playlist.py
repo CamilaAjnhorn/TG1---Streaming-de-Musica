@@ -10,7 +10,7 @@ class Playlist:
         try:
             self.nome = str(nome)
             self.usuario = usuario
-            self.itens = list(itens)
+            self.itens = []
             self.reproducoes = 0
         except Exception as e:
             registrar_erro(f"[Playlist] Erro ao gerar playlist: {e}")
@@ -37,14 +37,19 @@ class Playlist:
             registrar_erro(f"[Playlist] Erro ao remover mídia '{midia}':{e}")
     
     # reproduz uma playlist
-    def reproduzir (self):
+    def reproduzir(self):
         try:
-            for i in self.itens:
-                i.reproduzir()
-            self.reproducoes += 1
+            for m in self.itens:  # ✅ corrigido: era self.musicas
+                try:
+                    print(m.reproduzir())
+                except Exception as e:
+                    registrar_erro(f"[Playlist] Erro ao reproduzir mídia '{m.titulo}': {e}")
+            return "Reprodução finalizada."
         except Exception as e:
-            registrar_erro(f"[Playlist] Erro ao reproduzir playlist '{self.nome}: {e}")
-            return f"Erro ao reproduzir playlist '{self.nome}'"
+            registrar_erro(f"[Playlist] Erro geral ao reproduzir playlist '{self.nome}': {e}")
+            return f"Erro ao reproduzir playlist '{self.nome}'."
+
+
 
     # ao somar duas playlists as concatena e retorna uma nova
     def __add__ (self, other):

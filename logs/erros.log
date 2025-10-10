@@ -1,0 +1,22 @@
+2025-10-09 22:00:16.144647 [Relatorio] Erro ao gerar relatï¿½rio
+2025-10-09 22:38:39.641261 [Menu] Erro ao reproduzir música: 
+2025-10-09 22:39:53.249431 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-09 22:39:53.250442 [Musica] Erro ao reproduzir 'Enter Sandman': 'NoneType' object has no attribute 'get'
+2025-10-09 22:39:53.250442 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-09 22:39:53.250442 [Musica] Erro ao reproduzir 'Paint It Black': 'NoneType' object has no attribute 'get'
+2025-10-09 22:39:53.250442 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-09 22:39:53.250442 [Musica] Erro ao reproduzir 'One': 'NoneType' object has no attribute 'get'
+2025-10-09 22:39:53.251441 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-09 22:39:53.251441 [Musica] Erro ao reproduzir 'Master of Puppets': 'NoneType' object has no attribute 'get'
+2025-10-09 22:40:51.841029 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-09 22:40:51.842030 [Musica] Erro ao reproduzir 'Let It Be': 'NoneType' object has no attribute 'get'
+2025-10-10 05:58:43.864270 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-10 05:58:43.865271 [Musica] Erro ao reproduzir 'Enter Sandman': 'NoneType' object has no attribute 'get'
+2025-10-10 05:58:43.865271 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-10 05:58:43.865271 [Musica] Erro ao reproduzir 'Paint It Black': 'NoneType' object has no attribute 'get'
+2025-10-10 05:58:43.865271 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-10 05:58:43.865271 [Musica] Erro ao reproduzir 'One': 'NoneType' object has no attribute 'get'
+2025-10-10 05:58:43.866269 [Analises] Erro ao gerar dicionário de médias: division by zero
+2025-10-10 05:58:43.866269 [Musica] Erro ao reproduzir 'Master of Puppets': 'NoneType' object has no attribute 'get'
+2025-10-10 06:04:48.648469 [Menu] Erro ao reproduzir playlist: 
+2025-10-10 06:07:51.417147 [Playlist] Erro geral ao reproduzir playlist 'RockOn': 'Playlist' object has no attribute 'musicas'

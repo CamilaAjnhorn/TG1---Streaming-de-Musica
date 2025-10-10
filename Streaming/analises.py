@@ -65,10 +65,10 @@ class Analises:
 
         try:
             for m in musicas:
-                if m._avaliacoes == 0:
-                    dic[m] = 0
+                if  not m._avaliacoes:
+                    dic[m.titulo] = 0
                 else:
-                    dic[m] = sum(m._avaliacoes) / len(m._avaliacoes)
+                    dic[m.titulo] = sum(m._avaliacoes) / len(m._avaliacoes)
             return dic
         except Exception as e:
             registrar_erro(f"[Analises] Erro ao gerar dicionário de médias: {e}")
