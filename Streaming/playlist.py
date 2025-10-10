@@ -39,7 +39,7 @@ class Playlist:
     # reproduz uma playlist
     def reproduzir(self):
         try:
-            for m in self.itens:  # ✅ corrigido: era self.musicas
+            for m in self.itens:  
                 try:
                     print(m.reproduzir())
                 except Exception as e:
